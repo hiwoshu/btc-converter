@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clear": "rimraf bin",
-    "build": "npm run clear && ./node_modules/.bin/babel --out-dir bin src",
+    "create:lib": "./node_modules/.bin/babel --out-dir bin src",
+    "build": "npm run clear && npm run create:lib",
     "build:watch": "npm run build -- --watch",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint",
@@ -13,7 +14,7 @@
     "test:tdd": "npm run test -- --watch",
     "test:coverage": "nyc npm test"
   },
-  "preferGlobal":true,
+  "preferGlobal": true,
   "bin": {
     "btc-converter": "bin/main.js"
   },
@@ -53,5 +54,8 @@
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
     "rimraf": "^2.6.1"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
   }
 }
